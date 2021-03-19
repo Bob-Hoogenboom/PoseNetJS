@@ -1,4 +1,4 @@
-const canvas = document.getElementById('canvas');
+const canvas = document.getElementById('canvas1');
 const context = canvas.getContext('2d');
 
 const width = window.innerWidth;
@@ -35,7 +35,9 @@ function anime()
 		let point = new Point(widthVar, getRandomNumber(height), 200, leftrightcolor, false, typeVar); //RedLeftBlueRight 
 		//let point = new Point(getRandomNumber(width), getRandomNumber(height), 100, getRandomNumber1or2()); //RandomColor
 		points.push(point);
+		GetCirclePosition(points.x, points.y);
 	}
+	
 	context.clearRect(0,0,width,height);
 
 	points.map((thisPoint,i)=>{
@@ -44,7 +46,9 @@ function anime()
 			points.splice(i); //remove points that are smaller then 5 px;
 		}
 		thisPoint.draw(context);
-		console.log(points.length);
+		//console.log(points.length);
 	})	
+
+	//thisPoint.x, thisPoint.y
 }
 setInterval(anime, 10);

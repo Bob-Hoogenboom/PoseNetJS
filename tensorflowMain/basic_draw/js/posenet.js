@@ -117,7 +117,7 @@ function showSkeleton(poseArray){
       ellipse(poseArray.keypoints[15].position, 10, 'cyan'); // coordinates leftAnkle, draw circle
       ellipse(poseArray.keypoints[16].position, 10, 'cyan'); // coordinates rightAnkel, draw circle
 
-      //drawPosenet(poseArray.keypoints[0].position); // communicate position nose to game
+      GetWristPostion(poseArray.keypoints[9].position, poseArray.keypoints[10].position); // communicate position nose to game
       //drawTriangle(poseArray.keypoints); // communicate to second game
     }
     else {
