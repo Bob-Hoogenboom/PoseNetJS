@@ -8,6 +8,8 @@ canvas.width = width;
 canvas.height = height;
 
 let t = 0;
+let leftrightcolor;
+let typeVar;
 
 let points = [];
 
@@ -15,20 +17,13 @@ function getRandomNumber(max){
 	return Math.floor(Math.random()*max);
 }
 
-function getRandomNumber1or2(){
-	let output = Math.floor((Math.random() * 2) + 1);
-	if(output == 1){
-		return '#FF0000';
-	}else if(output == 2){
-		return '#0000FF';
-	}
-}
-
 function RedOrBlue(widthCheck){
 	if(widthCheck <= width/2){
-		return '#FF0000'; //red?
+		leftrightcolor = '#FF0000';
+		typeVar = "L";
 	}else if(widthCheck >= width/2){
-		return '#0000FF'; //blue?
+		leftrightcolor = '#0000FF';
+		typeVar = "R";
 	}
 }
 
@@ -36,7 +31,8 @@ function anime()
 {
 	if( Math.random()<0.05 && points.length < 1){
 		let widthVar = getRandomNumber(width)
-		let point = new Point(widthVar, getRandomNumber(height), 200, RedOrBlue(widthVar)); //RedLeftBlueRight 
+		RedOrBlue(widthVar);
+		let point = new Point(widthVar, getRandomNumber(height), 200, leftrightcolor, false, typeVar); //RedLeftBlueRight 
 		//let point = new Point(getRandomNumber(width), getRandomNumber(height), 100, getRandomNumber1or2()); //RandomColor
 		points.push(point);
 	}
