@@ -1,8 +1,7 @@
-
 let posenetOk = false;
 
-const screenWidth = screen.width;
-const screenHeight = screen.height;
+const screenWidth = window.innerWidth;
+const screenHeight = window.innerHeight;
 const canvas2 = document.getElementById('canvas2');
 canvas2.style.zIndex = 1;
 let ctx2 = canvas2.getContext('2d');
@@ -95,22 +94,35 @@ function showSkeleton(poseArray){
 
     if(poseArray.keypoints[0].score>0.8){// see the nose? pobability > 80%
       posenetOk = true; // start controlling
-      // nose index 0, left eye index 1, right eye index 2  left ear index 3, right ear index 4.  
+      // nose index 0, left eye index 1, right eye index 2  left ear index 3, right ear index 4.
 
-      // show nose, left eye & right eye
-      ellipse(poseArray.keypoints[0].position, 30, 'blue'); // coordinates nose, draw circle    
-      ellipse(poseArray.keypoints[1].position, 20, 'green'); // coordinates leftEye, draw circle
-      ellipse(poseArray.keypoints[2].position, 20, 'red'); // coordinates rightEye, draw circle
+      // show nose and eyes
+      ellipse(poseArray.keypoints[0].position, 20, 'cyan'); // coordinates nose, draw circle
+      ellipse(poseArray.keypoints[1].position, 10, 'green'); // coordinates leftEye, draw circle
+      ellipse(poseArray.keypoints[2].position, 10, 'green'); // coordinates rightEye, draw circle
 
-      
-      
-      drawPosenet(poseArray.keypoints[0].position); // communicate position nose to game
-      drawTriangle(poseArray.keypoints); // communicate to second game
+      //show shoulder to wrist
+      ellipse(poseArray.keypoints[5].position, 10, 'cyan'); // coordinates leftSchoulder, draw circle
+      ellipse(poseArray.keypoints[6].position, 10, 'cyan'); // coordinates rightShoulder, draw circle
+      ellipse(poseArray.keypoints[7].position, 10, 'cyan'); // coordinates leftElbow, draw circle
+      ellipse(poseArray.keypoints[8].position, 10, 'cyan'); // coordinates rightElbow, draw circle
+      ellipse(poseArray.keypoints[9].position, 10, 'blue'); // coordinates leftWrist, draw circle
+      ellipse(poseArray.keypoints[10].position, 10, 'red'); // coordinates rightWrist, draw circle
+
+      //show hips to ankles
+      ellipse(poseArray.keypoints[11].position, 10, 'cyan'); // coordinates leftHip, draw circle
+      ellipse(poseArray.keypoints[12].position, 10, 'cyan'); // coordinates rightHip, draw circle
+      ellipse(poseArray.keypoints[13].position, 10, 'cyan'); // coordinates leftKnee, draw circle
+      ellipse(poseArray.keypoints[14].position, 10, 'cyan'); // coordinates rightKnee, draw circle
+      ellipse(poseArray.keypoints[15].position, 10, 'cyan'); // coordinates leftAnkle, draw circle
+      ellipse(poseArray.keypoints[16].position, 10, 'cyan'); // coordinates rightAnkel, draw circle
+
+      //drawPosenet(poseArray.keypoints[0].position); // communicate position nose to game
+      //drawTriangle(poseArray.keypoints); // communicate to second game
     }
     else {
       posenetOk = false; // stop controlling
     }
-
   }
 
 //draw a circle
@@ -120,22 +132,6 @@ const ellipse = ( XY, radius, color) =>{
   ctx2.beginPath();
   ctx2.arc(XY.x, XY.y, radius, radius, 0, 2 * Math.PI);
   ctx2.fill();
-}
-
-function drawTriangle(XY) {
-  
-  //XY = object  
-  ctx2.lineJoin = 'round';
-  ctx2.lineCap = 'round';
-  ctx2.lineWidth = 5;
-  ctx2.strokeStyle = '#ff00ff';
-  ctx2.beginPath();
-  ctx2.moveTo( XY[0].position.x, XY[0].position.y)
-  ctx2.lineTo( XY[1].position.x, XY[1].position.y )
-  ctx2.stroke();
-  ctx2.moveTo( XY[0].position.x, XY[0].position.y)
-  ctx2.lineTo( XY[2].position.x, XY[2].position.y )
-  ctx2.stroke();    
 }
 
 start();
