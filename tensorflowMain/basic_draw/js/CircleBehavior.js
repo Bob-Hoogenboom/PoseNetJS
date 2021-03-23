@@ -8,7 +8,9 @@ canvas.width = width;
 canvas.height = height;
 
 let t = 0;
-let leftrightcolor. typeVar, leftDistance,rightDistance;
+let leftrightcolor;
+let typeVar;
+let leftDistance,rightDistance;
 let ldx, ldy, rdx, rdy;
 let points = [];
 
