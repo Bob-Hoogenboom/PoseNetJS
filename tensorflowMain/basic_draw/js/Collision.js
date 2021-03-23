@@ -15,17 +15,17 @@ let LatestLeftWristY, LatestLeftWristX;
 let LatestRightWristX, LatestRightWristY;
 
 const clearDrawing =() => {
-  ctx1.clearRect(0, 0, canvas1.width, canvas1.height);
+  //ctx1.clearRect(0, 0, canvas1.width, canvas1.height);
 }
 
 function GetWristPostion(XYRightWrist,XYLeftWrist) {
   [LatestRightWristX, LatestRightWristY] = [XYRightWrist.x, XYRightWrist.y];
   [LatestLeftWristX, LatestLeftWristY] = [XYLeftWrist.x, XYLeftWrist.y];
   //textHere.innerHTML= Math.floor(XY.x) + " " + Math.floor(XY.y);
-  console.log(LatestRightWristX,LatestRightWristY);
+  //console.log(LatestRightWristX,LatestRightWristY);
 }
 
 function GetCirclePosition(CircleX, CircleY){
-  console.log(CircleX);
+  //console.log(CircleX);
 }
 

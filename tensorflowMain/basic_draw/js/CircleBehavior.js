@@ -8,9 +8,8 @@ canvas.width = width;
 canvas.height = height;
 
 let t = 0;
-let leftrightcolor;
-let typeVar;
-
+let leftrightcolor. typeVar, leftDistance,rightDistance;
+let ldx, ldy, rdx, rdy;
 let points = [];
 
 function getRandomNumber(max){
@@ -30,12 +29,11 @@ function RedOrBlue(widthCheck){
 function anime()
 {
 	if( Math.random()<0.05 && points.length < 1){
-		let widthVar = getRandomNumber(width)
+		let widthVar = getRandomNumber(width);
 		RedOrBlue(widthVar);
 		let point = new Point(widthVar, getRandomNumber(height), 200, leftrightcolor, false, typeVar); //RedLeftBlueRight 
 		//let point = new Point(getRandomNumber(width), getRandomNumber(height), 100, getRandomNumber1or2()); //RandomColor
 		points.push(point);
-		GetCirclePosition(points.x, points.y);
 	}
 	
 	context.clearRect(0,0,width,height);
@@ -46,9 +44,25 @@ function anime()
 			points.splice(i); //remove points that are smaller then 5 px;
 		}
 		thisPoint.draw(context);
-		//console.log(points.length);
-	})	
 
-	//thisPoint.x, thisPoint.y
+		rdx = LatestRightWristX - thisPoint.x;
+		rdy = LatestRightWristY - thisPoint.y;
+		ldx = LatestLeftWristX - thisPoint.x;
+		ldy = LatestLeftWristY - thisPoint.y;
+
+		rightDistance = Math.floor(Math.sqrt(rdx * rdx + rdy *rdy));
+		leftDistance = Math.floor(Math.sqrt(ldx * ldx + ldy * ldy));
+
+		if(rightDistance <= thisPoint.radius && leftDistance <= thisPoint.radius){
+			console.log("hit");
+			thisPoint.color = "black";
+			points.splice(i,1);
+		}
+	})
+
+	function GetWristPostion(XYRightWrist,XYLeftWrist) {
+  		[LatestRightWristX, LatestRightWristY] = [XYRightWrist.x, XYRightWrist.y];
+  		[LatestLeftWristX, LatestLeftWristY] = [XYLeftWrist.x, XYLeftWrist.y];
+	}
 }
 setInterval(anime, 10);
