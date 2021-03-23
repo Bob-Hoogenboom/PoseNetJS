@@ -13,6 +13,7 @@ let typeVar;
 let leftDistance,rightDistance;
 let ldx, ldy, rdx, rdy;
 let points = [];
+let audio = new Audio("recourses/hit_target.mp3");
 
 function getRandomNumber(max){
 	return Math.floor(Math.random()*max);
@@ -55,10 +56,10 @@ function anime()
 		rightDistance = Math.floor(Math.sqrt(rdx * rdx + rdy *rdy));
 		leftDistance = Math.floor(Math.sqrt(ldx * ldx + ldy * ldy));
 
-		if(rightDistance <= thisPoint.radius && leftDistance <= thisPoint.radius){
+		if(rightDistance <= thisPoint.radius || leftDistance <= thisPoint.radius){
 			console.log("hit");
-			thisPoint.color = "black";
 			points.splice(i,1);
+			audio.play();
 		}
 	})
 
