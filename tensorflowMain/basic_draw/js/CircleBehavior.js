@@ -49,21 +49,22 @@ function anime()
 
 	points.map((thisPoint,i)=>{
 	
-		//thisPoint.radius *= 0.982; //ease in function
+		thisPoint.radius *= 0.982; //ease in function
 		if(thisPoint.radius < 20){
 			points.splice(i); //remove points that are smaller then 5 px;
 		}
 		thisPoint.draw(ctx1);
 
-		rdx = LatestRightWristX - thisPoint.x;
+		let  mirrorRight,mirrorLeft;
+
+		rdx = (canvas1.width - LatestRightWristX) - thisPoint.x;
 		rdy = LatestRightWristY - thisPoint.y;
-		ldx = LatestLeftWristX - thisPoint.x;
+		ldx = (canvas1.width - LatestLeftWristX) - thisPoint.x;
 		ldy = LatestLeftWristY - thisPoint.y;
 
-		rightDistance = Math.sqrt(ldx / rdx + rdy * rdy);
-		leftDistance = Math.sqrt(rdx / ldx + ldy * ldy);
-		console.log(rightDistance);
-		console.log(LatestRightWristX, LatestRightWristY);
+		rightDistance = Math.sqrt(rdx * rdx + rdy * rdy);
+		leftDistance = Math.sqrt(ldx * ldx + ldy * ldy);
+
 		if(rightDistance <= thisPoint.radius || leftDistance <= thisPoint.radius){
 			console.log("hit");
 			points.splice(i,1);
