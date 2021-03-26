@@ -92,7 +92,7 @@ function showSkeleton(poseArray){
     //left ear index 3 right ear index 4. left eye 1  right eye 2 nose 0
     //full table: https://www.tensorflow.org/lite/models/pose_estimation/overview
 
-    if(poseArray.keypoints[0].score>0.8){// see the nose? pobability > 80%
+    if(poseArray.keypoints[9].score>0.5  || poseArray.keypoints[10].score>0.5  ){// see the left/right wrist? pobability > 80%
       posenetOk = true; // start controlling
       // nose index 0, left eye index 1, right eye index 2  left ear index 3, right ear index 4.
 
