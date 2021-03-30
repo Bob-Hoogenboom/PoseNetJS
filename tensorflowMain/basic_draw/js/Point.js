@@ -62,19 +62,20 @@ class Point {
     }
 
   draw(){
-    context.beginPath();
-    context.fillStyle = this.color;
-    context.arc(this.x,this.y,this.radius,0,Math.PI*2);
-    context.stroke();
-    context.fill();
-    context.fillStyle = "black";
-    context.font = "15px Courier new";
-    context.fillText(this.label, this.x, this.y - 1.2* this.radius );
+    ctx1.beginPath();
+    ctx1.fillStyle = this.color;
+    ctx1.arc(this.x,this.y,this.radius,0,Math.PI*2);
+    ctx1.stroke();
+    ctx1.fill();
+    ctx1.fillStyle = "white";
+    ctx1.font = "15px Courier new";
+    ctx1.fillText(this.label, this.x, this.y - 1.2* this.radius );
+    ctx1.closePath();
   }
 
   printText(){
-    context.font = this.font;
-    context.fillText(this.text, this.x, this.y - 1.2*this.radius );
+    ctx1.font = this.font;
+    ctx1.fillText(this.text, this.x, this.y - 1.2*this.radius );
   }
 
 }
