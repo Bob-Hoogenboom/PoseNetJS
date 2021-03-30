@@ -1,0 +1,14 @@
+#startButtons {
+
+  align-content: center;
+}
+
+.score {
+  display: block;
+  float: left;
+}
+
+.timer {
+  display: block;
+  text-align:  center;
+}

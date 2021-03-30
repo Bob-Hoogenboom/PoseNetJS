@@ -1,7 +1,7 @@
 class MovingAverageCalculator {
     constructor() {
-        this._length = 10 // length of moving average
-        this._average = 5
+        this._length = 5 // length of moving average
+        this._average = 3
         this._valueAr = new Array(this._length).fill(0)//movingAverage memory
     }
     update(newValue) {
