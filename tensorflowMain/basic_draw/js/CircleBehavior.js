@@ -20,6 +20,9 @@ let ldx, ldy, rdx, rdy;
 let points = [];
 let audio = new Audio("recourses/hit_target.mp3");
 
+var score = 0;
+let textScore = "Score: ";
+
 function getRandomNumber(max){
 	return Math.floor(Math.random()*max);
 }
@@ -39,16 +42,16 @@ function anime()
 	if( Math.random()<0.05 && points.length < 1){
 		let widthVar = getRandomNumber(canvas1.width);
 		RedOrBlue(widthVar);
-		let point = new Point(widthVar, getRandomNumber(canvas1.height), 200, leftrightcolor, false, typeVar); //RedLeftBlueRight 
+		let point = new Point(widthVar, getRandomNumber(canvas1.height), 200, leftrightcolor, false, typeVar); //RedLeftBlueRight
 		//let point = new Point(getRandomNumber(width), getRandomNumber(height), 100, getRandomNumber1or2()); //RandomColor
 		//let point = new Point(100,300, 100, leftrightcolor, false, typeVar);
 		points.push(point);
 	}
-	
+
 	ctx1.clearRect(0,0,canvas1.width,canvas1.height);
 
 	points.map((thisPoint,i)=>{
-	
+
 		thisPoint.radius *= 0.982; //ease in function
 		if(thisPoint.radius < 20){
 			points.splice(i); //remove points that are smaller then 5 px;
@@ -66,11 +69,14 @@ function anime()
 		leftDistance = Math.sqrt(ldx * ldx + ldy * ldy);
 
 		if(rightDistance <= thisPoint.radius || leftDistance <= thisPoint.radius){
-			console.log("hit");
+			//console.log("hit");
 			points.splice(i,1);
 			audio.play();
+			score +=1;
+			document.getElementById("displayScore").style.fontFamily = "Impact";
+			document.getElementById("displayScore").innerHTML = textScore + score;
 		}
-	})	
+	})
 }
 
 function GetWristPostion(XYRightWrist,XYLeftWrist) {
