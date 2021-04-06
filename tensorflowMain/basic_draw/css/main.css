@@ -1,23 +1,30 @@
 body {
   height: 100vh;
-  background: linear-gradient(green, cyan) no-repeat;
+  background: linear-gradient(Red, Blue) no-repeat;
 }
 
 #startScreen {
   margin: auto;
-  margin-top: 100px;
+  margin-top: 25px;
   position: center;
-  width: 600px;
-  height: 400px;
-  background-color: grey;
-  color: #333;
+  width: 300px;
+  height: auto;
   text-align: center;
-  border: 8px solid;
-  border-radius: 10px;
-  box-shadow: 0 1px 32px white;
   transform: rotate(0) scale(0);
   animation: boom 1s linear;
   animation-fill-mode: forwards;
+}
+
+#startScreen:hover{
+  opacity: 0.3;
+}
+
+
+#Logo {
+  margin: auto;
+  margin-top: 25px;
+  position: center;
+  text-align: center;
 }
 
 @keyframes boom {
@@ -49,13 +56,6 @@ body {
   font-weight: bold;
 }
 
-#startScreen span {
-  position: relative;
-  font-size: 32px;
-  animation: up 2s linear infinite;
-  animation-delay: 3s;
-}
-
 @keyframes up {
   25% {
     top: -4px;
@@ -67,4 +67,36 @@ body {
   text-align: center;
   text-shadow: 0 2px 0 limegreen, 0 1px 64px white;
   animation: pulse 1.5s linear infinite;
+}
+
+#manualScreen {
+  margin: auto;
+  margin-top: 25px;
+  position: center;
+  width: 300px;
+  height: auto;
+  text-align: center;
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  opacity: 1;
+}
+
+.desc {
+  padding: 15px;
+  text-align: center;
 }
