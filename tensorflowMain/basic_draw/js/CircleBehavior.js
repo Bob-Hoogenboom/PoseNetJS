@@ -20,11 +20,8 @@ let ldx, ldy, rdx, rdy;
 let points = [];
 let audio = new Audio("recourses/hit_target.mp3");
 
-var score = 0;
-let textScore = "Score: ";
-
-function getRandomNumber(max){
-	return Math.floor(Math.random()*max);
+function getRandomNumber(min, max){
+	return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 function RedOrBlue(widthCheck){
@@ -40,9 +37,10 @@ function RedOrBlue(widthCheck){
 function anime()
 {
 	if( Math.random()<0.05 && points.length < 1){
-		let widthVar = getRandomNumber(canvas1.width);
+		let widthVar = getRandomNumber(canvas1.width*0.1, canvas1.width*0.9);
+		let heightVar = getRandomNumber(canvas1.height*0.1, canvas1.height*0.9)
 		RedOrBlue(widthVar);
-		let point = new Point(widthVar, getRandomNumber(canvas1.height), 200, leftrightcolor, false, typeVar); //RedLeftBlueRight
+		let point = new Point(widthVar, heightVar, 200, leftrightcolor, false, typeVar); //RedLeftBlueRight
 		//let point = new Point(getRandomNumber(width), getRandomNumber(height), 100, getRandomNumber1or2()); //RandomColor
 		//let point = new Point(100,300, 100, leftrightcolor, false, typeVar);
 		points.push(point);
@@ -68,8 +66,9 @@ function anime()
 		rightDistance = Math.sqrt(rdx * rdx + rdy * rdy);
 		leftDistance = Math.sqrt(ldx * ldx + ldy * ldy);
 
-		if(rightDistance <= thisPoint.radius || leftDistance <= thisPoint.radius){
-			//console.log("hit");
+		if(leftDistance <= thisPoint.radius || rightDistance <= thisPoint.radius){
+			// if(thisPoint.radius < )
+			console.log("hit");
 			points.splice(i,1);
 			audio.play();
 			score +=1;

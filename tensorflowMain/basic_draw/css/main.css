@@ -1,0 +1,102 @@
+body {
+  height: 100vh;
+  background: linear-gradient(Red, Blue) no-repeat;
+}
+
+#startScreen {
+  margin: auto;
+  margin-top: 25px;
+  position: center;
+  width: 300px;
+  height: auto;
+  text-align: center;
+  transform: rotate(0) scale(0);
+  animation: boom 1s linear;
+  animation-fill-mode: forwards;
+}
+
+#startScreen:hover{
+  opacity: 0.3;
+}
+
+
+#Logo {
+  margin: auto;
+  margin-top: 25px;
+  position: center;
+  text-align: center;
+}
+
+@keyframes boom {
+  100% {
+    transform: rotate(1080deg) scale(1);
+  }
+}
+
+#startScreen div {
+  height: 50%;
+}
+
+#startScreen h1 {
+  position:absolute;
+  width: 100%;
+  color: #222;
+  font-size: 60px;
+  text-shadow: 0 1px 2px;
+  animation: pulse 6s linear infinite;
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+#startScreen p {
+  font-weight: bold;
+}
+
+@keyframes up {
+  25% {
+    top: -4px;
+  }
+}
+
+#gameOn {
+  font-size: 100px;
+  text-align: center;
+  text-shadow: 0 2px 0 limegreen, 0 1px 64px white;
+  animation: pulse 1.5s linear infinite;
+}
+
+#manualScreen {
+  margin: auto;
+  margin-top: 25px;
+  position: center;
+  width: 300px;
+  height: auto;
+  text-align: center;
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  opacity: 1;
+}
+
+.desc {
+  padding: 15px;
+  text-align: center;
+}
