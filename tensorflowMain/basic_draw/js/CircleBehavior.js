@@ -20,6 +20,9 @@ let ldx, ldy, rdx, rdy;
 let points = [];
 let audio = new Audio("recourses/hit_target.mp3");
 
+var score = 0;
+let textScore = "Score: ";
+
 function getRandomNumber(min, max){
 	return Math.floor(Math.random() * (max - min + 1) + min);
 }
@@ -48,6 +51,9 @@ function anime()
 
 	ctx1.clearRect(0,0,canvas1.width,canvas1.height);
 
+	document.getElementById("displayScore").style.fontFamily = "Impact";
+	document.getElementById("displayScore").innerHTML = textScore + score;
+
 	points.map((thisPoint,i)=>{
 
 		thisPoint.radius *= 0.982; //ease in function
@@ -68,12 +74,10 @@ function anime()
 
 		if(leftDistance <= thisPoint.radius || rightDistance <= thisPoint.radius){
 			// if(thisPoint.radius < )
-			console.log("hit");
+			// console.log("hit");
 			points.splice(i,1);
 			audio.play();
 			score +=1;
-			document.getElementById("displayScore").style.fontFamily = "Impact";
-			document.getElementById("displayScore").innerHTML = textScore + score;
 		}
 	})
 }
