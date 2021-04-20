@@ -13,3 +13,4 @@ The main concept of this prototype is to hit the targets as they come on the scr
 * [Git Repository](https://github.com/Bob-Hoogenboom/PoseNetJS)
 * [PoseNet Performance Research](https://docs.google.com/document/d/1cl2BsAZnQUOKLJSDpAOIU5h7rQxvBJp7DTdGDbq1DE0/edit?usp=sharing)
 * [Voortgang Presentatie](https://mediacollegeamsterdam-my.sharepoint.com/:p:/g/personal/31822_ma-web_nl/EbAgTPFNaq1OlIHRYnCCiJIBOnLG20jL21UAZHOoYrB64A?e=vADcfi)
+* [Test Rapport](https://docs.google.com/document/d/1odOm5YxNiFxJ6RFZ1KjmlYgIs_5qp0YA1tH4fLx5vJ8/edit?usp=sharing)
